@@ -8,16 +8,6 @@ import { Link } from "react-router-dom";
 
 export interface LoginInterface {}
 
-const login = async () => {
-  const user = await (await loginUser()).json();
-  const userData: userInfo = {
-    name: "user.data.name",
-    token: user.data.access_token,
-  };
-
-  saveLocalStorageObj(localstorageKeys.userInfo, userData);
-};
-
 const Login: React.FC<LoginInterface> = () => {
   const [checked, setChecked] = useState(false);
   const [formError, setFormError] = useState("");
@@ -39,6 +29,12 @@ const Login: React.FC<LoginInterface> = () => {
     if (res.status !== 200) {
       setFormError("Contraseña incorrecta");
     }
+
+    const userData: userInfo = {
+      name: "user.data.name",
+      token: res.data.access_token,
+    };
+    saveLocalStorageObj(localstorageKeys.userInfo, userData);
   };
 
   return (
