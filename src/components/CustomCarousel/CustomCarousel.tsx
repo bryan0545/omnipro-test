@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { produtsList } from "../../pages/data/products";
+import { produtsList } from "../../data/products";
+import "./CustomCarousel.scss";
 
 export interface CarouselInterface {
   autoPlay?: boolean;
@@ -15,12 +14,12 @@ const CustomCarousel: React.FC<CarouselInterface> = ({ ...props }) => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (props.autoPlay || !props.showButtons) {
-      const interval = setInterval(() => {
-        selectNewImage(selectedIndex, product.images);
-      }, 1000);
-      return () => clearInterval(interval);
-    }
+    // if (props.autoPlay || !props.showButtons) {
+    //   const interval = setInterval(() => {
+    //     selectNewImage(selectedIndex, product.images);
+    //   }, 1500);
+    //   return () => clearInterval(interval);
+    // }
   });
 
   const selectNewImage = (index: number, images: string[], next = true) => {
@@ -49,27 +48,19 @@ const CustomCarousel: React.FC<CarouselInterface> = ({ ...props }) => {
     selectNewImage(selectedIndex, product.images);
   };
 
-  console.log("setSelectedIndex", selectedIndex);
-
   return (
     <>
-      <img src={`/images/${selectedImage}`} alt="Gentleman" className={loaded ? "loaded" : ""} onLoad={() => setLoaded(true)} />
-      <div>
-        {props.showButtons ? (
-          <>
-            <button onClick={previous}>{"<"}</button>
-            <button onClick={next}>{">"}</button>
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
-      <div>
-        {product.images.map((image, index) => (
-          <div key={index}>
-            <button onClick={() => selectImageById(index, product.images)}>{index}</button>
-          </div>
-        ))}
+      <div className="carousel__container">
+        <img className="carousel__image" src={`/images/${selectedImage}`} alt="Gentleman" onLoad={() => setLoaded(true)} />
+        <div className="carousel__buttongroup-container">
+          {product.images.map((image, index) => (
+            <button
+              key={index}
+              className={`carousel__buttongroup ${index === selectedIndex ? "active" : ""}`}
+              onClick={() => selectImageById(index, product.images)}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

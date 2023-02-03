@@ -1,0 +1,41 @@
+.carousel__container {
+  display: flex;
+  position: relative;
+  z-index: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.carousel__image {
+  width: 360px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+}
+
+.carousel__buttongroup-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translate(-50%, -50%);
+
+  .carousel__buttongroup {
+    width: 16px;
+    height: 4px;
+    background-color: var(--color-white);
+    margin: 0 3px;
+    border-radius: 12px;
+    transition: width 0.5s;
+    cursor: pointer;
+  }
+
+  .carousel__buttongroup.active {
+    width: 32px;
+    background-color: var(--color-primary);
+  }
+}

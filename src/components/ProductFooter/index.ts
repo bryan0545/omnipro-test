@@ -1,0 +1,1 @@
+export { default as ProductFooter } from './ProductFooter';
