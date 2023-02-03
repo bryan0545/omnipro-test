@@ -1,0 +1,37 @@
+.product__header {
+  position: absolute;
+  height: 52px;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+
+  .product__burger-button {
+    position: absolute;
+    top: 25px;
+    left: 26px;
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .product__logo {
+    position: absolute;
+    top: -17px;
+    left: 297px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 69px;
+    height: 69px;
+    background-color: var(--color-white);
+    border-radius: 50%;
+
+    img {
+      position: relative;
+      top: 7px;
+      width: 29px;
+      height: 22px;
+    }
+  }
+}

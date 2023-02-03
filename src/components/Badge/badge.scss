@@ -1,0 +1,21 @@
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 24px;
+  font-family: var(--font-poppins);
+  color: var(--color-black);
+  background-color: var(--color-badge);
+  border-radius: 13px;
+  text-align: center;
+
+  .badge__title {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #1d221a;
+    opacity: 1;
+  }
+}

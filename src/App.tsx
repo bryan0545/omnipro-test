@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Login, Register, Products } from "./pages";
 import { PrivateRoutes, PublicRoutes } from "./models";
@@ -6,7 +6,7 @@ import { AuthGuard } from "./guards/AuthGuard";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={PrivateRoutes.PRODUCTS} />} />
