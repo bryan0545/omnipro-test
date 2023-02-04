@@ -2,13 +2,13 @@ import { useState } from "react";
 import { TextInput } from "../../components";
 import { PublicLayout } from "../../layouts/PublicLayout";
 import CustomButton from "../../components/CustomButton/CustomButton";
-import "./register.scss";
 import { SuccessPage } from "../../components/SuccessPage";
 import { useNavigate } from "react-router-dom";
 import { PublicRoutes, userInfo } from "../../models";
 import { createUser } from "../../services/auth";
 import { saveLocalStorageObj } from "../../utilities";
 import { localstorageKeys } from "../../constants/constants";
+import "./register.scss";
 
 export interface RegisterInterface {}
 

@@ -1,4 +1,5 @@
 import "./wellcomeMessage.scss";
+
 export interface WellcomeMessageInterface {}
 
 const WellcomeMessage: React.FC<WellcomeMessageInterface> = () => {

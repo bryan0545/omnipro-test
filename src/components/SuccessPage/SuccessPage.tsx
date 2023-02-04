@@ -9,10 +9,9 @@ const SuccessPage: React.FC<SuccessPageInterface> = ({ title, backgroundImageUrl
   const splitedTitle = title.split(" ");
   const title1 = splitedTitle[0];
   const title2 = splitedTitle[1];
-  console.log("splitedTitle", splitedTitle);
 
   return (
-    <div className={`success-page ${title2 ? "double__paddin" : ""}`} style={{ backgroundImage: `url(${backgroundImageUrl})` }}>
+    <div className={`success-page ${!!title2 ? "double__paddin" : ""}`} style={{ backgroundImage: `url(${backgroundImageUrl})` }}>
       <div className="success-page__container">
         <div className="success__Image">
           <img src="/images/LogoOmniWhite.svg" alt="Company logo" />
