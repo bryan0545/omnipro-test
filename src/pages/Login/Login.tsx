@@ -1,34 +1,16 @@
-import { localstorageKeys } from "../../constants/constants";
-import { userInfo } from "../../models/userData";
-import { loginUser } from "../../services/auth";
-import { saveLocalStorageObj } from "../../utilities/localstorage";
 import { TextInput, CheckInput, CustomButton, FormContainer, PublicHeader, WellcomeMessage } from "../../components/";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PublicLayout } from "../../layouts/PublicLayout";
 import "./login.scss";
 import { SuccessPage } from "../../components/SuccessPage";
-import { useNavigate } from "react-router-dom";
-import { PrivateRoutes } from "../../models";
 import { useLogin } from "../../hooks/useLogin";
 
 export interface LoginInterface {}
 
 const Login: React.FC<LoginInterface> = () => {
-  const { loadingRequest, formError, setFormError, success, login } = useLogin();
+  const { loadingRequest, formError, loginForm, onChangeHandler, success, login } = useLogin();
   const [checked, setChecked] = useState(false);
-  const [loginForm, setLoginForm] = useState({
-    name: "",
-    password: "",
-  });
-
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormError("");
-    setLoginForm({
-      ...loginForm,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   return (
     <>
@@ -41,6 +23,7 @@ const Login: React.FC<LoginInterface> = () => {
                 type="text"
                 name="name"
                 placeholder="Email o nombre de usuario"
+                error={!!formError}
                 onChange={onChangeHandler}
               />
             </div>
