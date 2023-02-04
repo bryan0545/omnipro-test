@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { alsoLikeProducts } from "../../data/products";
 import { productData, sizes } from "../../models/productData";
 import { moneyFormat } from "../../utilities";
 import { Badge } from "../Badge";
+import { CarrouselSlider } from "../CarrouselSlider";
 import { Counter } from "../Counter";
 import { CustomButton } from "../CustomButton";
 import { FavoriteButton } from "../FavoriteButton";
@@ -27,7 +29,7 @@ const ProductInfo: React.FC<ProductInfoInterface> = ({ product }) => {
         <span>{product.name}</span>
       </div>
       <div className={"product-info__stars"}>
-        <img src={`/images/stars.svg`} alt="Product rating" />
+        <img src={`/images/stars.png`} alt="Product rating" />
       </div>
       <div className={"product-info__prices"}>
         <span className={"product-info__price"}>${moneyFormat(product.price)}</span>
@@ -56,6 +58,8 @@ const ProductInfo: React.FC<ProductInfoInterface> = ({ product }) => {
       <div className={"also-like"}>
         <span>TAMBIÉN TE PODRÍA GUSTAR</span>
       </div>
+      <div className={"carrousel-slider"}></div>
+      <CarrouselSlider products={alsoLikeProducts} />
     </div>
   );
 };
