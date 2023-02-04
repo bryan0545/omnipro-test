@@ -5,7 +5,7 @@ export const loginUser = () => {
     method: "POST",
     body: JSON.stringify({
       email: "marklyan@gmail.com",
-      password: "simple_password2",
+      password: "simple_password",
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
