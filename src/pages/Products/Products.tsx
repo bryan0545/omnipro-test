@@ -13,7 +13,7 @@ const Products: React.FC<ProductsInterface> = () => {
   return (
     <div className="product__container">
       <ProductHeader />
-      <Carousel autoPlay={false} showButtons={false} />
+      <Carousel product={produtsList[0]} />
       <ProductInfo product={produtsList[0]} />
       <ProductFooter />
     </div>

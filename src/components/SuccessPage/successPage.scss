@@ -1,7 +1,6 @@
-.success__page {
-  position: fixed;
+.success-page {
+  position: absolute;
   top: 0;
-  left: 0;
   height: 760px;
   width: 360px;
   padding: 0 32px;
@@ -11,27 +10,26 @@
   background: transparent 0% 0% no-repeat padding-box;
   animation: append-animate 0.5s linear;
 
-  .success__page-container {
+  .success-page__container {
     display: flex;
     width: 178px;
     height: 91px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     color: var(--color-white);
     font: normal normal 600 36px/40px Poppins;
-    // letter-spacing: 0px;
-
-    // .success__Image {
-    //   width: 60px;
-    //   height: 46px;
-    // }
-
-    // .success__message {
-    // }
   }
 }
 
+.success-page.double__paddin {
+  padding: 0 49px;
+}
+
+.success__message {
+  display: flex;
+  flex-direction: column;
+}
 @keyframes append-animate {
   from {
     opacity: 0;

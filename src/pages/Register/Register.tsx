@@ -2,13 +2,13 @@ import { useState } from "react";
 import { TextInput } from "../../components";
 import { PublicLayout } from "../../layouts/PublicLayout";
 import CustomButton from "../../components/CustomButton/CustomButton";
-import "./register.scss";
 import { SuccessPage } from "../../components/SuccessPage";
 import { useNavigate } from "react-router-dom";
 import { PublicRoutes, userInfo } from "../../models";
 import { createUser } from "../../services/auth";
 import { saveLocalStorageObj } from "../../utilities";
 import { localstorageKeys } from "../../constants/constants";
+import "./register.scss";
 
 export interface RegisterInterface {}
 
@@ -55,14 +55,16 @@ const Register: React.FC<RegisterInterface> = () => {
     for (const prop in registerForm) {
       const key = prop as keyof typeof registerForm;
       if (registerForm[key] === "") {
-        return setFormError("Por favor, diligencia los campos marcados");
+        setFormError("Por favor, diligencia los campos marcados");
+        return false;
       }
     }
+    return true;
   };
 
   const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    validateForm();
+    if (!validateForm()) return;
     setLoadingRequest(true);
     try {
       const res = await (await createUser()).json();

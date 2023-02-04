@@ -1,5 +1,5 @@
 import Carousel from "react-multi-carousel";
-import { CarrouselItem } from "../CarrouselItem";
+import { CarrouselItem } from "../";
 import { smallProductData } from "../../models";
 import "react-multi-carousel/lib/styles.css";
 

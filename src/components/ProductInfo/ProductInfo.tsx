@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 import { alsoLikeProducts } from "../../data/products";
 import { productData, sizes } from "../../models/productData";
 import { moneyFormat } from "../../utilities";
-import { Badge } from "../Badge";
-import { CarrouselSlider } from "../CarrouselSlider";
-import { Counter } from "../Counter";
-import { CustomButton } from "../CustomButton";
-import { FavoriteButton } from "../FavoriteButton";
-import SizeList from "../SizeList/SizeList";
+import { Badge, CarrouselSlider, Counter, CustomButton, FavoriteButton, SizeList } from "../";
 import "./productInfo.scss";
 export interface ProductInfoInterface {
   product: productData;

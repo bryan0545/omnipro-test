@@ -1,4 +1,3 @@
-import React from "react";
 import { FormContainer, PublicHeader, WellcomeMessage } from "../../components";
 export interface PublicLayoutInterface {
   titleForm: string;

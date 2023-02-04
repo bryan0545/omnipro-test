@@ -1,9 +1,9 @@
-import "./App.scss";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Login, Register, Products } from "./pages";
 import { PrivateRoutes, PublicRoutes } from "./models";
 import { AuthGuard } from "./guards/AuthGuard";
 import { Page404 } from "./pages/Page404";
+import "./App.scss";
 
 function App() {
   return (

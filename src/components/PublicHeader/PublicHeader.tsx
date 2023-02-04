@@ -1,4 +1,5 @@
 import "./publicHeader.scss";
+
 export interface PublicHeaderInterface {}
 
 const PublicHeader: React.FC<PublicHeaderInterface> = () => {

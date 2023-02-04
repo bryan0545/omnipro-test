@@ -5,10 +5,10 @@ export interface ProductFooterInterface {}
 const ProductFooter: React.FC<ProductFooterInterface> = () => {
   return (
     <div className="footer-container">
-      <div className="footer-container__newsletter">
+      <div className="footer-newsletter__container">
         <span>Newsletter</span>
       </div>
-      <div className="footer-container__copyright">
+      <div className="footer-copyright__container">
         <span>Todos los derechos reservados</span>
         <span>2023</span>
         <span>Omnishop</span>
