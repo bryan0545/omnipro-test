@@ -1,0 +1,19 @@
+.page404__container {
+  display: flex;
+  height: 760px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  span {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 3px;
+    color: var(--color-white);
+  }
+}

@@ -1,0 +1,31 @@
+.message__container {
+  width: 312px;
+  height: 108px;
+}
+
+.principal-message__container {
+  height: 91px;
+
+  .first-word {
+    text-align: left;
+    font: normal normal 600 36px/40px Poppins;
+    letter-spacing: 0px;
+    color: var(--color-pink);
+  }
+  .message {
+    color: var(--color-white);
+    text-align: left;
+    font: normal normal 600 36px/40px Poppins;
+    letter-spacing: 0px;
+  }
+}
+
+.message-secondary {
+  height: 17px;
+  display: flex;
+  align-items: center;
+  color: var(--color-white);
+  text-align: left;
+  font: normal normal 600 12px/16px Poppins;
+  letter-spacing: 0px;
+}

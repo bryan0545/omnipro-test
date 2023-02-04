@@ -1,62 +1,61 @@
-import { localstorageKeys } from "../../constants/constants";
-import { userInfo } from "../../models/userData";
-import { loginUser } from "../../services/auth";
-import { saveLocalStorageObj } from "../../utilities/localstorage";
-import { TextInput, CheckInput } from "../../components/";
+import { TextInput, CheckInput, CustomButton, FormContainer, PublicHeader, WellcomeMessage } from "../../components/";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { PublicLayout } from "../../layouts/PublicLayout";
+import { SuccessPage } from "../../components/SuccessPage";
+import { useLogin } from "../../hooks/useLogin";
+import "./login.scss";
 
 export interface LoginInterface {}
 
 const Login: React.FC<LoginInterface> = () => {
+  const { loadingRequest, formError, loginForm, onChangeHandler, success, login } = useLogin();
   const [checked, setChecked] = useState(false);
-  const [formError, setFormError] = useState("");
-  const [loginForm, setLoginForm] = useState({
-    name: "",
-    password: "",
-  });
-
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLoginForm({
-      ...loginForm,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const login = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const res = await (await loginUser()).json();
-    if (res.status !== 200) {
-      setFormError("Contraseña incorrecta");
-    }
-
-    const userData: userInfo = {
-      name: "user.data.name",
-      token: res.data.access_token,
-    };
-    saveLocalStorageObj(localstorageKeys.userInfo, userData);
-  };
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div>
-      <form onSubmit={login}>
-        <TextInput value={loginForm["name"]} type="text" name="name" placeholder="Email o nombre de usuario" onChange={onChangeHandler} />
-        <TextInput
-          value={loginForm["password"]}
-          type="password"
-          name="password"
-          placeholder="Ingresa contraseña"
-          onChange={onChangeHandler}
-          error={!!formError}
-          errorMessage={formError}
-        />
-        <CheckInput label="Suscríbete al newsletter" checked={checked} onClick={() => setChecked(!checked)} />
-        <button type="submit">Ingresa</button>
-      </form>
-      <div>
-        <Link to="">¿Olvidaste tu contraseña?</Link>
-      </div>
-    </div>
+    <>
+      <PublicLayout titleForm="Ingresa con tus datos" backgroundImageUrl={"images/loginBackground.png"}>
+        <form onSubmit={login}>
+          <div className="login__inputs">
+            <div className="form__input-container">
+              <TextInput
+                value={loginForm["name"]}
+                type="text"
+                name="name"
+                placeholder="Email o nombre de usuario"
+                error={!!formError && !!!loginForm.name}
+                onChange={onChangeHandler}
+              />
+            </div>
+            <TextInput
+              value={loginForm["password"]}
+              type="password"
+              name="password"
+              placeholder="Ingresa contraseña"
+              onChange={onChangeHandler}
+              error={!!formError}
+              errorMessage={formError}
+              iconButtonUrl="/images/showPassword.svg"
+              showPassword={showPassword}
+              changeShowPassword={() => setShowPassword(!showPassword)}
+            />
+          </div>
+          <div className="form__check-container">
+            <CheckInput label="Suscríbete al newsletter" checked={checked} onClick={() => setChecked(!checked)} />
+          </div>
+          <div className="form__button-container">
+            <CustomButton title="Ingresa" type="submit" disabled={loadingRequest} />
+          </div>
+        </form>
+        <div className={"link__container"}>
+          <Link className={"general__link"} to="">
+            ¿Olvidaste tu contraseña?
+          </Link>
+        </div>
+      </PublicLayout>
+      {success && <SuccessPage title="Ingresando" backgroundImageUrl="/images/successLogin.png" />}
+    </>
   );
 };
 

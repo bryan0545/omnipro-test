@@ -1,4 +1,4 @@
-import { productData } from "../../models/productData";
+import { productData, smallProductData } from "../models/productData";
 
 export const produtsList: productData[] = [
   {
@@ -13,35 +13,35 @@ export const produtsList: productData[] = [
   },
 ];
 
-export const alsoLike: productData[] = [
+export const alsoLikeProducts: smallProductData[] = [
   {
     id: 1,
     name: "Maroon Sweater square La robe Bari",
     price: 760000,
-    images: [],
+    images: ["carousel1.png"],
   },
   {
     id: 2,
     name: "Orange vest sweater La veste Baska",
     price: 1280000,
-    images: [],
+    images: ["carousel2.png"],
   },
   {
     id: 3,
     name: "Dress Le pull Neve Fluffy long sleeve knit.",
     price: 980000,
-    images: [],
+    images: ["carousel3.png"],
   },
   {
     id: 4,
     name: "Sweater Le pull Neve Fluffy long sleeve knit",
     price: 200000,
-    images: [],
+    images: ["carousel4.png"],
   },
   {
     id: 5,
     name: "Le sac Rond",
     price: 825000,
-    images: [],
+    images: ["carousel5.png"],
   },
 ];

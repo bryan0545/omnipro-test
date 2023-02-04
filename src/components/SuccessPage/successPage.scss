@@ -1,0 +1,40 @@
+.success-page {
+  position: absolute;
+  top: 0;
+  height: 760px;
+  width: 360px;
+  padding: 0 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent 0% 0% no-repeat padding-box;
+  animation: append-animate 0.5s linear;
+
+  .success-page__container {
+    display: flex;
+    width: 178px;
+    height: 91px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: var(--color-white);
+    font: normal normal 600 36px/40px Poppins;
+  }
+}
+
+.success-page.double__paddin {
+  padding: 0 49px;
+}
+
+.success__message {
+  display: flex;
+  flex-direction: column;
+}
+@keyframes append-animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
