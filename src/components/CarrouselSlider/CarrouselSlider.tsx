@@ -28,8 +28,8 @@ const CarrouselSlider: React.FC<CarrouselSliderInterface> = ({ products }) => {
   };
   return (
     <Carousel responsive={responsive} arrows={false}>
-      {products.map((product) => (
-        <CarrouselItem product={product} />
+      {products.map((product, index) => (
+        <CarrouselItem key={index} product={product} />
       ))}
     </Carousel>
   );
