@@ -2,9 +2,9 @@ import { TextInput, CheckInput, CustomButton, FormContainer, PublicHeader, Wellc
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PublicLayout } from "../../layouts/PublicLayout";
-import "./login.scss";
 import { SuccessPage } from "../../components/SuccessPage";
 import { useLogin } from "../../hooks/useLogin";
+import "./login.scss";
 
 export interface LoginInterface {}
 

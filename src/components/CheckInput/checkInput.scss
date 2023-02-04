@@ -11,8 +11,13 @@
   cursor: pointer;
 
   .check-input__check {
+    opacity: 0.5;
     accent-color: var(--color-primary);
     margin-right: 4px;
     cursor: pointer;
+  }
+
+  .check-input__check:checked {
+    opacity: 1;
   }
 }

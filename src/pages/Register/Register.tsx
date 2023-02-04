@@ -55,14 +55,16 @@ const Register: React.FC<RegisterInterface> = () => {
     for (const prop in registerForm) {
       const key = prop as keyof typeof registerForm;
       if (registerForm[key] === "") {
-        return setFormError("Por favor, diligencia los campos marcados");
+        setFormError("Por favor, diligencia los campos marcados");
+        return false;
       }
     }
+    return true;
   };
 
   const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    validateForm();
+    if (!validateForm()) return;
     setLoadingRequest(true);
     try {
       const res = await (await createUser()).json();

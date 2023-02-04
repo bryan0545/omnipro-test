@@ -4,8 +4,8 @@ export interface WellcomeMessageInterface {}
 const WellcomeMessage: React.FC<WellcomeMessageInterface> = () => {
   return (
     <div className="message__container">
-      <div className="principal__message-container">
-        <span className="first__word">Bienvenido</span>
+      <div className="principal-message__container">
+        <span className="first-word">Bienvenido</span>
         <span className="message"> a Omnishop</span>
       </div>
       <div className="message-secondary">
