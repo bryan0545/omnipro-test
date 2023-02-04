@@ -1,11 +1,11 @@
-const baseUrl = "https://fakestoreapi.com";
+const baseUrl = "https://api.storerestapi.com";
 
 export const loginUser = () => {
-  return fetch("https://api.storerestapi.com/auth/login", {
+  return fetch(`${baseUrl}/auth/login`, {
     method: "POST",
     body: JSON.stringify({
       email: "marklyan@gmail.com",
-      password: "simple_password",
+      password: "simple_password2",
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -14,7 +14,7 @@ export const loginUser = () => {
 };
 
 export const createUser = async () => {
-  return fetch("https://api.storerestapi.com/auth/register", {
+  return fetch(`${baseUrl}/auth/register`, {
     method: "POST",
     body: JSON.stringify({
       name: "Alex Pi",

@@ -1,6 +1,5 @@
-import React from "react";
-import "./sizeList.scss";
 import { sizes } from "../../models/productData";
+import "./sizeList.scss";
 
 export interface SizeListInterface {
   sizeList: string[];

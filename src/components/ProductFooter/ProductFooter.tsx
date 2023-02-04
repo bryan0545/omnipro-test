@@ -1,4 +1,3 @@
-import React from "react";
 import "./productFooter.scss";
 
 export interface ProductFooterInterface {}
@@ -14,7 +13,7 @@ const ProductFooter: React.FC<ProductFooterInterface> = () => {
         <span>2023</span>
         <span>Omnishop</span>
 
-        <img src="/images/LogoOmni.svg" alt="" />
+        <img src="/images/LogoOmni.svg" alt="Company logo" />
       </div>
     </div>
   );

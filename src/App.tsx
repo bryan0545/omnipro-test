@@ -9,7 +9,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to={PrivateRoutes.PRODUCTS} />} />
+          <Route path="/" element={<Navigate to={PublicRoutes.LOGIN} />} />
           <Route path="*" element={<>Not Found</>} />
           <Route path={PublicRoutes.LOGIN} element={<Login />} />
           <Route path={PublicRoutes.REGISTER} element={<Register />} />

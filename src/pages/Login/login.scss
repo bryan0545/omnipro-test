@@ -1,0 +1,37 @@
+.login__page {
+  height: 760px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  background: transparent 0% 0% no-repeat padding-box;
+
+  .login__message-container {
+    margin-top: 40px;
+  }
+
+  .login__form-container {
+    margin-top: 85.5px;
+  }
+
+  .login__inputs {
+    margin-top: 12px;
+  }
+
+  .form__input-container {
+    margin-bottom: 8px;
+  }
+
+  .form__check-container {
+    margin-top: 12px;
+  }
+
+  .form__button-container {
+    margin-top: 12px;
+  }
+
+  .link__container {
+    display: flex;
+  }
+}

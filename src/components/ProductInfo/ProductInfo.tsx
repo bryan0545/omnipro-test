@@ -27,7 +27,7 @@ const ProductInfo: React.FC<ProductInfoInterface> = ({ product }) => {
         <span>{product.name}</span>
       </div>
       <div className={"product-info__stars"}>
-        <img src={`/images/stars.svg`} />
+        <img src={`/images/stars.svg`} alt="Product rating" />
       </div>
       <div className={"product-info__prices"}>
         <span className={"product-info__price"}>${moneyFormat(product.price)}</span>
@@ -47,8 +47,10 @@ const ProductInfo: React.FC<ProductInfoInterface> = ({ product }) => {
         <div className={"product-info__description-text"}>
           <span>{product.description}</span>
         </div>
-        <div className={"read-more"}>
-          <Link to="">Leer más</Link>
+        <div className={"link__container"}>
+          <Link className={"general__link"} to="">
+            Leer más
+          </Link>
         </div>
       </div>
       <div className={"also-like"}>
