@@ -52,21 +52,30 @@ export const useLogin = () => {
     if (!validateForm()) return;
     if (!validateCredentials()) return;
     setLoadingRequest(true);
+    try {
+      const res = await (await loginUser(loginForm.name, loginForm.password)).json();
+      if (res.status === 400) {
+        setLoadingRequest(false);
+        return setFormError("Contraseña incorrecta");
+      }
 
-    const res = await (await loginUser()).json();
-    if (res.status === 400) {
+      if (res.status > 299) {
+        setLoadingRequest(false);
+        return setFormError("Usuario o contraseña incorrectos");
+      }
+
+      const userData: userInfo = {
+        name: loginForm.name,
+        token: res.data.access_token,
+      };
+
+      saveLocalStorageObj(localstorageKeys.userInfo, userData);
       setLoadingRequest(false);
-      setFormError("Contraseña incorrecta");
+      redirectToSuccess();
+    } catch (error) {
+      setLoadingRequest(false);
+      return setFormError("Algo salió mal, intentalo mas tarde");
     }
-
-    const userData: userInfo = {
-      name: loginForm.name,
-      token: res.data.access_token,
-    };
-
-    saveLocalStorageObj(localstorageKeys.userInfo, userData);
-    setLoadingRequest(false);
-    redirectToSuccess();
   };
 
   return {

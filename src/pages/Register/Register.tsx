@@ -64,24 +64,28 @@ const Register: React.FC<RegisterInterface> = () => {
     e.preventDefault();
     validateForm();
     setLoadingRequest(true);
+    try {
+      const res = await (await createUser()).json();
+      if (res.status !== 201) {
+        setLoadingRequest(false);
+        return setFormError("Algo salió mal, intentalo mas tarde");
+      }
 
-    const res = await (await createUser()).json();
-    if (res.status !== 201) {
+      const userData: userInfo = {
+        name: registerForm.name,
+        password: registerForm.password,
+      };
+      saveLocalStorageObj(localstorageKeys.registeredUser, userData);
       setLoadingRequest(false);
-      return setFormError("Algo salió mal, intentalo mas tarde");
+
+      setSuccess(true);
+      setTimeout(() => {
+        navigation(PublicRoutes.LOGIN);
+      }, 2000);
+    } catch {
+      setLoadingRequest(false);
+      setFormError("Algo salió mal, intentalo mas tarde");
     }
-
-    const userData: userInfo = {
-      name: registerForm.name,
-      password: registerForm.password,
-    };
-    saveLocalStorageObj(localstorageKeys.registeredUser, userData);
-    setLoadingRequest(false);
-
-    setSuccess(true);
-    setTimeout(() => {
-      navigation(PublicRoutes.LOGIN);
-    }, 2000);
   };
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
