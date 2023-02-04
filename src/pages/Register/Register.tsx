@@ -5,7 +5,10 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import "./register.scss";
 import { SuccessPage } from "../../components/SuccessPage";
 import { useNavigate } from "react-router-dom";
-import { PublicRoutes } from "../../models";
+import { PublicRoutes, userInfo } from "../../models";
+import { createUser } from "../../services/auth";
+import { saveLocalStorageObj } from "../../utilities";
+import { localstorageKeys } from "../../constants/constants";
 
 export interface RegisterInterface {}
 
@@ -13,6 +16,7 @@ const Register: React.FC<RegisterInterface> = () => {
   const navigation = useNavigate();
   const [success, setSuccess] = useState(false);
   const [formError, setFormError] = useState("");
+  const [loadingRequest, setLoadingRequest] = useState(false);
   const [registerForm, setRegisterForm] = useState({
     name: "",
     lastname: "",
@@ -56,10 +60,25 @@ const Register: React.FC<RegisterInterface> = () => {
     }
   };
 
-  const registerUser = (e: React.FormEvent<HTMLFormElement>) => {
+  const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSuccess(true);
     validateForm();
+    setLoadingRequest(true);
+
+    const res = await (await createUser()).json();
+    if (res.status !== 201) {
+      setLoadingRequest(false);
+      return setFormError("Algo salió mal, intentalo mas tarde");
+    }
+
+    const userData: userInfo = {
+      name: registerForm.name,
+      password: registerForm.password,
+    };
+    saveLocalStorageObj(localstorageKeys.registeredUser, userData);
+    setLoadingRequest(false);
+
+    setSuccess(true);
     setTimeout(() => {
       navigation(PublicRoutes.LOGIN);
     }, 2000);
@@ -93,7 +112,7 @@ const Register: React.FC<RegisterInterface> = () => {
             })}
           </div>
           <div className="register__button">
-            <CustomButton title="Regístrate" type="submit" />
+            <CustomButton title="Regístrate" type="submit" disabled={loadingRequest} />
           </div>
         </form>
       </PublicLayout>
