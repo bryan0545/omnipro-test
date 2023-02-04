@@ -1,4 +1,3 @@
-import React from "react";
 import "./badge.scss";
 
 export interface BadgeInterface {

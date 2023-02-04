@@ -1,0 +1,19 @@
+.form__container {
+  position: relative;
+  width: 312px;
+  padding: 32px;
+  background-color: var(--color-white);
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 24px;
+
+  .form__title {
+    height: 18px;
+    color: var(--color-primary);
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0px;
+    opacity: 1;
+  }
+}

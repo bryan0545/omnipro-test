@@ -51,7 +51,7 @@ const CustomCarousel: React.FC<CarouselInterface> = ({ ...props }) => {
   return (
     <>
       <div className="carousel__container">
-        <img className="carousel__image" src={`/images/${selectedImage}`} alt="Gentleman" onLoad={() => setLoaded(true)} />
+        <img className="carousel__image" src={`/images/${selectedImage}`} alt={`Product ${selectedImage}`} onLoad={() => setLoaded(true)} />
         <div className="carousel__buttongroup-container">
           {product.images.map((image, index) => (
             <button

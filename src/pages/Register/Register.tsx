@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { CheckInput, TextInput } from "../../components";
+import { TextInput } from "../../components";
+import { PublicLayout } from "../../layouts/PublicLayout";
+import CustomButton from "../../components/CustomButton/CustomButton";
+import "./register.scss";
 
 export interface RegisterInterface {}
 
@@ -62,24 +65,29 @@ const Register: React.FC<RegisterInterface> = () => {
   };
 
   return (
-    <div>
+    <PublicLayout titleForm="Completa tus datos para registrarte" backgroundImageUrl={"images/registerBackground.png"}>
       <form onSubmit={registerUser}>
-        {inputs.map((input) => {
-          const key = input.name as keyof typeof registerForm;
-          return (
-            <TextInput
-              value={registerForm[key]}
-              key={input.id}
-              {...input}
-              onChange={onChangeHandler}
-              error={!!(formError && !registerForm[key])}
-            />
-          );
-        })}
-        {formError && <span>{formError}</span>}
-        <button type="submit">Regístrate</button>
+        <div className="register__inputs">
+          {inputs.map((input) => {
+            const key = input.name as keyof typeof registerForm;
+            return (
+              <div key={input.id} className="register__input-container">
+                <TextInput
+                  value={registerForm[key]}
+                  {...input}
+                  onChange={onChangeHandler}
+                  error={!!(formError && !registerForm[key])}
+                  errorMessage={input.id === inputs.length && formError ? formError : ""}
+                />
+              </div>
+            );
+          })}
+        </div>
+        <div className="register__button">
+          <CustomButton title="Regístrate" type="submit" />
+        </div>
       </form>
-    </div>
+    </PublicLayout>
   );
 };
 

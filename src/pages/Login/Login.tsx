@@ -2,14 +2,17 @@ import { localstorageKeys } from "../../constants/constants";
 import { userInfo } from "../../models/userData";
 import { loginUser } from "../../services/auth";
 import { saveLocalStorageObj } from "../../utilities/localstorage";
-import { TextInput, CheckInput } from "../../components/";
+import { TextInput, CheckInput, CustomButton, FormContainer, PublicHeader, WellcomeMessage } from "../../components/";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { PublicLayout } from "../../layouts/PublicLayout";
+import "./login.scss";
 
 export interface LoginInterface {}
 
 const Login: React.FC<LoginInterface> = () => {
   const [checked, setChecked] = useState(false);
+  const [loadingRequest, setLoadingRequest] = useState(false);
   const [formError, setFormError] = useState("");
   const [loginForm, setLoginForm] = useState({
     name: "",
@@ -17,6 +20,7 @@ const Login: React.FC<LoginInterface> = () => {
   });
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormError("");
     setLoginForm({
       ...loginForm,
       [e.target.name]: e.target.value,
@@ -24,9 +28,11 @@ const Login: React.FC<LoginInterface> = () => {
   };
 
   const login = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLoadingRequest(true);
     e.preventDefault();
     const res = await (await loginUser()).json();
     if (res.status !== 200) {
+      setLoadingRequest(false);
       setFormError("Contraseña incorrecta");
     }
 
@@ -35,28 +41,45 @@ const Login: React.FC<LoginInterface> = () => {
       token: res.data.access_token,
     };
     saveLocalStorageObj(localstorageKeys.userInfo, userData);
+    setLoadingRequest(false);
   };
 
   return (
-    <div>
+    <PublicLayout titleForm="Ingresa con tus datos" backgroundImageUrl={"images/loginBackground.png"}>
       <form onSubmit={login}>
-        <TextInput value={loginForm["name"]} type="text" name="name" placeholder="Email o nombre de usuario" onChange={onChangeHandler} />
-        <TextInput
-          value={loginForm["password"]}
-          type="password"
-          name="password"
-          placeholder="Ingresa contraseña"
-          onChange={onChangeHandler}
-          error={!!formError}
-          errorMessage={formError}
-        />
-        <CheckInput label="Suscríbete al newsletter" checked={checked} onClick={() => setChecked(!checked)} />
-        <button type="submit">Ingresa</button>
+        <div className="login__inputs">
+          <div className="form__input-container">
+            <TextInput
+              value={loginForm["name"]}
+              type="text"
+              name="name"
+              placeholder="Email o nombre de usuario"
+              onChange={onChangeHandler}
+            />
+          </div>
+          <TextInput
+            value={loginForm["password"]}
+            type="password"
+            name="password"
+            placeholder="Ingresa contraseña"
+            onChange={onChangeHandler}
+            error={!!formError}
+            errorMessage={formError}
+          />
+        </div>
+        <div className="form__check-container">
+          <CheckInput label="Suscríbete al newsletter" checked={checked} onClick={() => setChecked(!checked)} />
+        </div>
+        <div className="form__button-container">
+          <CustomButton title="Ingresa" type="submit" disabled={loadingRequest} />
+        </div>
       </form>
-      <div>
-        <Link to="">¿Olvidaste tu contraseña?</Link>
+      <div className={"link__container"}>
+        <Link className={"general__link"} to="">
+          ¿Olvidaste tu contraseña?
+        </Link>
       </div>
-    </div>
+    </PublicLayout>
   );
 };
 

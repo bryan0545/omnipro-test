@@ -1,3 +1,4 @@
+import "./textInput.scss";
 export interface TextInputInterface {
   placeholder?: string;
   type: string;
@@ -10,9 +11,9 @@ export interface TextInputInterface {
 
 const TextInput: React.FC<TextInputInterface> = ({ error, errorMessage, ...rest }) => {
   return (
-    <div>
-      <input {...rest} />
-      {errorMessage && <span>{errorMessage}</span>}
+    <div className="text-input__container">
+      <input className={`text-input ${error ? "error" : ""}`} {...rest} />
+      {errorMessage && <span className={"error__message"}>{errorMessage}</span>}
     </div>
   );
 };

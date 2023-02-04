@@ -1,0 +1,16 @@
+.check-input__container {
+  display: flex;
+  height: 17px;
+  align-items: center;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: left;
+  letter-spacing: 0px;
+  color: var(--color-primary);
+  font-weight: 500;
+
+  .check-input__check {
+    accent-color: var(--color-primary);
+    margin-right: 4px;
+  }
+}

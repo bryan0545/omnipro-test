@@ -1,0 +1,26 @@
+.text-input__container {
+  display: flex;
+  flex-direction: column;
+  .text-input {
+    width: 247px;
+    height: 42px;
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px var(--color-grey-border) solid;
+
+    text-align: left;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0px;
+  }
+
+  .text-input.error {
+    border: 1px var(--color-error) solid;
+    color: var(--color-error);
+  }
+
+  .text-input:focus {
+    outline: none;
+    border: 1px var(--color-primary) solid;
+  }
+}
