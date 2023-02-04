@@ -33,7 +33,8 @@ export const useLogin = () => {
 
   const validateCredentials = () => {
     const user = getLocalStorageObj(localstorageKeys.registeredUser);
-    if (user.name !== loginForm.name || user.password !== loginForm.password) {
+
+    if (!user || user.name !== loginForm.name || user.password !== loginForm.password) {
       setFormError("Usuario o contraseña incorrectos");
       return false;
     }
