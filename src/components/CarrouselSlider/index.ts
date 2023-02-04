@@ -1,0 +1,1 @@
+export { default as CarrouselSlider } from './CarrouselSlider';
