@@ -9,7 +9,9 @@ const ProductHeader: React.FC<ProductHeaderInterface> = () => {
         <img src="/images/burgerBtn.svg" alt="Burger button icon" />
       </button>
       <div className="product__logo">
-        <img src="/images/LogoOmni.svg" alt="Company logo" />
+        <div className="product__logo2">
+          <img src="/images/LogoOmni.svg" alt="Company logo" />
+        </div>
       </div>
     </div>
   );
