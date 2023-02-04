@@ -1,4 +1,14 @@
 .product__container {
   position: relative;
   width: 360;
+  animation: append-animate 0.8s linear;
+}
+
+@keyframes append-animate {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
 }

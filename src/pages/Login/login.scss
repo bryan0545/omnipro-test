@@ -6,6 +6,7 @@
   align-items: center;
   margin: 0;
   background: transparent 0% 0% no-repeat padding-box;
+  animation: append-animate 0.8s linear;
 
   .login__message-container {
     margin-top: 40px;
@@ -33,5 +34,14 @@
 
   .link__container {
     display: flex;
+  }
+}
+
+@keyframes append-animate {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
   }
 }

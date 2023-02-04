@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import { CarrouselSlider } from "../../components";
 import { Carousel } from "../../components/CustomCarousel";
 import { ProductFooter } from "../../components/ProductFooter";
 import { ProductHeader } from "../../components/ProductHeader";
