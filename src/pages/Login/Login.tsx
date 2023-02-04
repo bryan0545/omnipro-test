@@ -11,6 +11,7 @@ export interface LoginInterface {}
 const Login: React.FC<LoginInterface> = () => {
   const { loadingRequest, formError, loginForm, onChangeHandler, success, login } = useLogin();
   const [checked, setChecked] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <>
@@ -35,6 +36,9 @@ const Login: React.FC<LoginInterface> = () => {
               onChange={onChangeHandler}
               error={!!formError}
               errorMessage={formError}
+              iconButtonUrl="/images/showPassword.svg"
+              showPassword={showPassword}
+              changeShowPassword={() => setShowPassword(!showPassword)}
             />
           </div>
           <div className="form__check-container">
