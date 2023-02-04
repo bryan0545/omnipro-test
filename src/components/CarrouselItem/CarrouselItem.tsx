@@ -7,7 +7,6 @@ export interface CarrouselItemInterface {
 }
 
 const CarrouselItem: React.FC<CarrouselItemInterface> = ({ product }) => {
-  console.log("product", product);
   return (
     <div className="carrousel-item__container">
       <div className="carrousel-item__image">
